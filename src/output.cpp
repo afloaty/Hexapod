@@ -14,27 +14,27 @@ Leg_Struct Leg[6];
 void Servo_init()
 {
     servoDriver_0.begin();
-    servoDriver_0.setOscillatorFrequency(27000000);
+    servoDriver_0.setOscillatorFrequency(25000000);
     servoDriver_0.setPWMFreq(SERVO_FREQ); // Analog servos run at ~50 Hz updates
 
     servoDriver_1.begin();
-    servoDriver_1.setOscillatorFrequency(27000000);
+    servoDriver_1.setOscillatorFrequency(25000000);
     servoDriver_1.setPWMFreq(SERVO_FREQ); // Analog servos run at ~50 Hz updates
 
 #pragma region configureServos
 
-// for correct Servo Placenment check the Leg Configuration and Servo Leg Configuration Images
+// for correct Servo Placement check the Leg Configuration and Servo Leg Configuration Images
 #pragma region Leg_0
-    Leg[0].Servo[0].ch = 2;
+    Leg[0].Servo[0].ch = 0;
     Leg[0].Servo[1].ch = 1;
-    Leg[0].Servo[2].ch = 0;
+    Leg[0].Servo[2].ch = 2;
 
     Leg[0].Servo[2].minAngle = 20;
     Leg[0].Servo[2].maxAngle = 160;
 
-    Leg[0].Servo[0].angleOffset = 0;
-    Leg[0].Servo[1].angleOffset = -10;
-    Leg[0].Servo[2].angleOffset = -5;
+    Leg[0].Servo[0].angleOffset = -15;
+    Leg[0].Servo[1].angleOffset = 20;
+    Leg[0].Servo[2].angleOffset = 70;
 
     Leg[0].mirrored = true;
     Leg[0].mountAngle = -30;
@@ -42,16 +42,16 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_1
-    Leg[1].Servo[0].ch = 6;
-    Leg[1].Servo[1].ch = 5;
-    Leg[1].Servo[2].ch = 4;
+    Leg[1].Servo[0].ch = 3;
+    Leg[1].Servo[1].ch = 4;
+    Leg[1].Servo[2].ch = 5;
 
     Leg[1].Servo[2].minAngle = 20;
     Leg[1].Servo[2].maxAngle = 160;
 
-    Leg[1].Servo[0].angleOffset = -10;
-    Leg[1].Servo[1].angleOffset = 0;
-    Leg[1].Servo[2].angleOffset = 12;
+    Leg[1].Servo[0].angleOffset = 5; //Negative is CCW
+    Leg[1].Servo[1].angleOffset = 30;
+    Leg[1].Servo[2].angleOffset = 85;
 
     Leg[1].mirrored = true;
     Leg[1].mountAngle = -90;
@@ -59,16 +59,16 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_2
-    Leg[2].Servo[0].ch = 13;
-    Leg[2].Servo[1].ch = 14;
-    Leg[2].Servo[2].ch = 15;
+    Leg[2].Servo[0].ch = 6;
+    Leg[2].Servo[1].ch = 7;
+    Leg[2].Servo[2].ch = 8;
 
     Leg[2].Servo[2].minAngle = 20;
     Leg[2].Servo[2].maxAngle = 160;
 
-    Leg[2].Servo[0].angleOffset = -12;
-    Leg[2].Servo[1].angleOffset = -10;
-    Leg[2].Servo[2].angleOffset = -16;
+    Leg[2].Servo[0].angleOffset = 45;
+    Leg[2].Servo[1].angleOffset = 25; //Negative is CW
+    Leg[2].Servo[2].angleOffset = 90;
 
     Leg[2].mirrored = true;
     Leg[2].mountAngle = -150;
@@ -76,16 +76,16 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_3
-    Leg[3].Servo[0].ch = 18;
-    Leg[3].Servo[1].ch = 17;
-    Leg[3].Servo[2].ch = 16;
+    Leg[3].Servo[0].ch = 9;
+    Leg[3].Servo[1].ch = 10;
+    Leg[3].Servo[2].ch = 11;
 
     Leg[3].Servo[2].minAngle = 20;
     Leg[3].Servo[2].maxAngle = 160;
 
-    Leg[3].Servo[0].angleOffset = -1;
-    Leg[3].Servo[1].angleOffset = 6;
-    Leg[3].Servo[2].angleOffset = 44;
+    Leg[3].Servo[0].angleOffset = 20; //Positive is CW
+    Leg[3].Servo[1].angleOffset = 20; //Positive is CCW
+    Leg[3].Servo[2].angleOffset = 85; //Positive is CCW
 
     Leg[3].mirrored = false;
     Leg[3].mountAngle = 150;
@@ -93,9 +93,9 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_4
-    Leg[4].Servo[0].ch = 25;
-    Leg[4].Servo[1].ch = 26;
-    Leg[4].Servo[2].ch = 27;
+    Leg[4].Servo[0].ch = 12;
+    Leg[4].Servo[1].ch = 13;
+    Leg[4].Servo[2].ch = 14;
 
     Leg[4].Servo[2].minAngle = 20;
     Leg[4].Servo[2].maxAngle = 160;
@@ -103,14 +103,13 @@ void Servo_init()
     Leg[4].mirrored = false;
     Leg[4].mountAngle = 90;
 
-    Leg[4].Servo[0].angleOffset = -5;
-    Leg[4].Servo[1].angleOffset = -10;
-    Leg[4].Servo[2].angleOffset = -8;
-
+    Leg[4].Servo[0].angleOffset = 40; //Positive is CW
+    Leg[4].Servo[1].angleOffset = 20; //Positive is CCW
+    Leg[4].Servo[2].angleOffset = 65; //Positive is CCW
 #pragma endregion
 
 #pragma region Leg_5
-    Leg[5].Servo[0].ch = 29;
+    Leg[5].Servo[0].ch = 15;
     Leg[5].Servo[1].ch = 30;
     Leg[5].Servo[2].ch = 31;
 

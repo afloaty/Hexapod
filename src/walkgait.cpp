@@ -106,7 +106,7 @@ void walkCycle()
     }
 
     // #######################################
-    // ### calculare target and subTargets ###
+    // ### calculate target and subTargets ###
     // #######################################
 
     for (size_t i = 0; i < 6; i++)
@@ -134,11 +134,11 @@ void walkCycle()
     }
 }
 
-// choose lifted legs for furthes step (only when all legs are on the ground)
+// choose lifted legs for furthest step (only when all legs are on the ground)
 void setLegStateAtWalkInit()
 {
     // choose new lifted legs based on their position (which group makes more sense for the next step)
-    float possibleStepLength[6]; // how long of a step can the leg take while being in contackt with the ground
+    float possibleStepLength[6]; // how long of a step can the leg take while being in contact with the ground
 
     for (size_t i = 0; i < 6; i++)
     {
@@ -158,7 +158,7 @@ void setLegStateAtWalkInit()
         dynamicArray[i] = possibleStepLength[i];
     }
 
-    // legs act in group of threes (0, 2, 4 and 1, 3, 5) -> get leg for each group that takes the smalles step
+    // legs act in group of threes (0, 2, 4 and 1, 3, 5) -> get leg for each group that takes the smallest step
     int indexOfShortesPath = findSmallestValue(dynamicArray);
 
     if (indexOfShortesPath % 2 == 0)
