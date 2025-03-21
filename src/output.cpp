@@ -6,7 +6,7 @@
 // ================================================================
 #ifdef SERVO
 
-Adafruit_PWMServoDriver servoDriver_0 = Adafruit_PWMServoDriver();
+Adafruit_PWMServoDriver servoDriver_0 = Adafruit_PWMServoDriver(0x40);
 Adafruit_PWMServoDriver servoDriver_1 = Adafruit_PWMServoDriver(0x41);
 
 Leg_Struct Leg[6];
@@ -95,7 +95,7 @@ void Servo_init()
 #pragma region Leg_4
     Leg[4].Servo[0].ch = 12;
     Leg[4].Servo[1].ch = 13;
-    Leg[4].Servo[2].ch = 15;
+    Leg[4].Servo[2].ch = 16;
 
     Leg[4].Servo[2].minAngle = 20;
     Leg[4].Servo[2].maxAngle = 160;
@@ -110,7 +110,7 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_5
-    Leg[5].Servo[0].ch = 14;
+    Leg[5].Servo[0].ch = 17;
     Leg[5].Servo[1].ch = 18;
     Leg[5].Servo[2].ch = 19;
 
@@ -119,7 +119,7 @@ void Servo_init()
 
     Leg[5].Servo[0].angleOffset = 2;
     Leg[5].Servo[1].angleOffset = -3;
-    Leg[5].Servo[2].angleOffset = -20;
+    Leg[5].Servo[2].angleOffset = 0;
 
     Leg[5].mirrored = false;
     Leg[5].mountAngle = 30;
