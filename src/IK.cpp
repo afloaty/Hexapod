@@ -32,12 +32,12 @@ void calcLegServoAngles(Leg_Struct &leg)
     // ### calc angles ###
     // ###################
 
-    float noTrochanter = sqrt(pow(localCoordinates.x, 2) + pow(localCoordinates.y, 2)) - LENGTH_TROCHANTER; // distance between Servo 2 and the tip on the XY Plane
-    float servo2TipDistance = sqrt(pow(noTrochanter, 2) + pow(localCoordinates.z, 2));                      // distance between servo 2 and the tip
+    float noCOXA = sqrt(pow(localCoordinates.x, 2) + pow(localCoordinates.y, 2)) - LENGTH_COXA; // distance between Servo 2 and the tip on the XY Plane
+    float servo2TipDistance = sqrt(pow(noCOXA, 2) + pow(localCoordinates.z, 2));                      // distance between servo 2 and the tip
 
     float angle_0 = atan2(localCoordinates.y, localCoordinates.x) * RAD_TO_DEG + 90;
 
-    float angleRightSideTriangle = atan2(localCoordinates.z, noTrochanter) * RAD_TO_DEG;
+    float angleRightSideTriangle = atan2(localCoordinates.z, noCOXA) * RAD_TO_DEG;
     float angleUnequalTriangle = acos((pow(LENGTH_TIBIA, 2) - pow(servo2TipDistance, 2) - pow(LENGTH_FEMUR, 2)) / (-2 * servo2TipDistance * LENGTH_FEMUR)) * RAD_TO_DEG;
 
     float angleUnequalTriangle_2 = acos((pow(servo2TipDistance, 2) - pow(LENGTH_TIBIA, 2) - pow(LENGTH_FEMUR, 2)) / (-2 * LENGTH_TIBIA * LENGTH_FEMUR)) * RAD_TO_DEG; // second angle of unequal triangle

@@ -86,8 +86,8 @@ size_t findSmallestValue(const std::vector<float> &array); // return index of sm
 // ================================================================
 extern int loopTime;
 extern Vector2 directionInput; // what direction and how fast (vector length) the hexapod should walking
-extern float rotationInput;    // how much and fas should the hexapod rotate
-extern float groundClearance;  // how heigh of the groung is the hexapod walking
+extern float rotationInput;    // how much and how fast should the hexapod rotate
+extern float groundClearance;  // how high off the ground is the hexapod walking
 extern float stepRadius;       // how long of a step can be taken taken
 extern float maxSpeed;         // maximum speed for leg movement
 
@@ -119,8 +119,8 @@ struct Leg_Struct
     Servo_Struct Servo[3];            // servos for each leg (from root to tip)
     bool mirrored;                    // ik for mirrored legs is slightly different
     int mountAngle;                   // angle at which the leg is mounted (from center line forwared)
-    Vector3 targetPosition;           // enpoint the leg is trying to reach (used for IK calculations)
-    Vector3 curPosition;              // cur enpoint of leg
+    Vector3 targetPosition;           // endpoint the leg is trying to reach (used for IK calculations)
+    Vector3 curPosition;              // current enpoint of leg
     std::vector<Vector3> pointOnPath; // dynamic number of points on a path that the is traveling
     bool lifted = false;              // if the leg is lifted for taking a step -> set to true
 };
@@ -148,9 +148,9 @@ void Output_update();
 
 #ifdef SERVO
 
-#define LENGTH_TROCHANTER 50
-#define LENGTH_FEMUR 80
-#define LENGTH_TIBIA 120
+#define LENGTH_COXA 50
+#define LENGTH_FEMUR 75
+#define LENGTH_TIBIA 125
 
 void calcLegServoAngles(Leg_Struct &leg);
 

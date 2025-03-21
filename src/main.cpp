@@ -17,104 +17,116 @@ const float movementSpeed = 120.0f;  // mm/s
 const float rotationSpeed = 90.0f;  // degrees per second
 
 void setup() {
-  Servo_init(); // Initialize servos
+    Servo_init(); // Initialize servos
 
-  Serial.begin(115200);
-  pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW);
+    Serial.begin(115200);
+    pinMode(ledPin, OUTPUT);
+    digitalWrite(ledPin, LOW);
 
-  WiFi.softAP(ssid, password);
-  Serial.println("WiFi AP started");
-  Serial.print("IP Address: ");
-  Serial.println(WiFi.softAPIP());
+    WiFi.softAP(ssid, password);
+    Serial.println("WiFi AP started");
+    Serial.print("IP Address: ");
+    Serial.println(WiFi.softAPIP());
 
-  server.on("/", HTTP_GET, []() {
-      server.send(200, "text/html", htmlPage);
-  });
+    server.on("/", HTTP_GET, []() {
+        server.send(200, "text/html", htmlPage);
+    });
 
-  server.on("/led/on", HTTP_GET, []() {
-      digitalWrite(ledPin, HIGH);
-      Serial.println("LED ON");
-      server.send(200, "text/plain", "LED ON");
-  });
+    server.on("/led/on", HTTP_GET, []() {
+        digitalWrite(ledPin, HIGH);
+        Serial.println("LED ON");
+        server.send(200, "text/plain", "LED ON");
+    });
 
-  server.on("/led/off", HTTP_GET, []() {
-      digitalWrite(ledPin, LOW);
-      Serial.println("LED OFF");
-      server.send(200, "text/plain", "LED OFF");
-  });
+    server.on("/led/off", HTTP_GET, []() {
+        digitalWrite(ledPin, LOW);
+        Serial.println("LED OFF");
+        server.send(200, "text/plain", "LED OFF");
+    });
 
-  server.on("/move/forward", HTTP_GET, []() {
-      directionInput = Vector2(movementSpeed, 0);
-      rotationInput = 0;
-      Serial.println("Moving Forward");
-      server.send(200, "text/plain", "Moving Forward");
-  });
+    server.on("/move/forward", HTTP_GET, []() {
+        directionInput = Vector2(movementSpeed, 0);
+        rotationInput = 0;
+        Serial.println("Moving Forward");
+        server.send(200, "text/plain", "Moving Forward");
+    });
 
-  server.on("/move/backward", HTTP_GET, []() {
-      directionInput = Vector2(-movementSpeed, 0);
-      rotationInput = 0;
-      Serial.println("Moving Backward");
-      server.send(200, "text/plain", "Moving Backward");
-  });
+    server.on("/move/backward", HTTP_GET, []() {
+        directionInput = Vector2(-movementSpeed, 0);
+        rotationInput = 0;
+        Serial.println("Moving Backward");
+        server.send(200, "text/plain", "Moving Backward");
+    });
 
-  server.on("/move/left", HTTP_GET, []() {
-      directionInput = Vector2(0, -movementSpeed);
-      rotationInput = 0;
-      Serial.println("Moving Left");
-      server.send(200, "text/plain", "Moving Left");
-  });
+    server.on("/move/left", HTTP_GET, []() {
+        directionInput = Vector2(0, -movementSpeed);
+        rotationInput = 0;
+        Serial.println("Moving Left");
+        server.send(200, "text/plain", "Moving Left");
+    });
 
-  server.on("/move/right", HTTP_GET, []() {
-      directionInput = Vector2(0, movementSpeed);
-      rotationInput = 0;
-      Serial.println("Moving Right");
-      server.send(200, "text/plain", "Moving Right");
-  });
+    server.on("/move/right", HTTP_GET, []() {
+        directionInput = Vector2(0, movementSpeed);
+        rotationInput = 0;
+        Serial.println("Moving Right");
+        server.send(200, "text/plain", "Moving Right");
+    });
 
-  server.on("/rotate/ccw", HTTP_GET, []() {
-      directionInput = Vector2(0, 0);
-      rotationInput = -rotationSpeed;
-      Serial.println("Rotating CCW");
-      server.send(200, "text/plain", "Rotating CCW");
-  });
+    server.on("/rotate/ccw", HTTP_GET, []() {
+        directionInput = Vector2(0, 0);
+        rotationInput = -rotationSpeed;
+        Serial.println("Rotating CCW");
+        server.send(200, "text/plain", "Rotating CCW");
+    });
 
-  server.on("/rotate/cw", HTTP_GET, []() {
-      directionInput = Vector2(0, 0);
-      rotationInput = rotationSpeed;
-      Serial.println("Rotating CW");
-      server.send(200, "text/plain", "Rotating CW");
-  });
+    server.on("/rotate/cw", HTTP_GET, []() {
+        directionInput = Vector2(0, 0);
+        rotationInput = rotationSpeed;
+        Serial.println("Rotating CW");
+        server.send(200, "text/plain", "Rotating CW");
+    });
 
-  server.on("/move/stop", HTTP_GET, []() {
-      directionInput = Vector2(0, 0);
-      rotationInput = 0;
-      Serial.println("Stopped");
-      server.send(200, "text/plain", "Stopped");
-  });
+    server.on("/move/stop", HTTP_GET, []() {
+        directionInput = Vector2(0, 0);
+        rotationInput = 0;
+        Serial.println("Stopped");
+        server.send(200, "text/plain", "Stopped");
+    });
 
-  server.on("/ping", HTTP_GET, []() {
-      String clientTime = server.arg("time");
-      server.send(200, "text/plain", clientTime);
-  });
+    server.on("/sit", HTTP_GET, []() {
+        sitDown();
+        Serial.println("Sitting Down");
+        server.send(200, "text/plain", "Sitting Down");
+    });
 
-  server.begin();
-  Serial.println("Web server started");
+    server.on("/stand", HTTP_GET, []() {
+        standUp();
+        Serial.println("Standing Up");
+        server.send(200, "text/plain", "Standing Up");
+    });
 
-  standUp();  // Stand up at startup
+    server.on("/ping", HTTP_GET, []() {
+        String clientTime = server.arg("time");
+        server.send(200, "text/plain", clientTime);
+    });
+
+    server.begin();
+    Serial.println("Web server started");
+
+    standUp();  // Stand up at startup
 }
 
 unsigned long lastTime = 0;
 
 void loop() {
-  server.handleClient();
+    server.handleClient();
 
-  unsigned long curTime = millis();
-  loopTime = curTime - lastTime;
-  lastTime = curTime;
+    unsigned long curTime = millis();
+    loopTime = curTime - lastTime;
+    lastTime = curTime;
 
-  if (HexapodState != State::SITTING) {
-    walkCycle();
-    Output_update();
-  }
+    if (HexapodState != State::SITTING) {
+        walkCycle();
+        Output_update();
+    }
 }

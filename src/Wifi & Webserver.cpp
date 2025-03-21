@@ -80,6 +80,8 @@ const char* htmlPage = R"rawliteral(
             <button id="backward" class="button" onclick="sendCommand('/move/backward')">Backward (S)</button>
             <div></div>
         </div>
+        <button id="sit" class="button" onclick="sendCommand('/sit')">Sit</button>
+        <button id="stand" class="button" onclick="sendCommand('/stand')">Stand</button>
     </div>
 
     <!-- Indicators -->

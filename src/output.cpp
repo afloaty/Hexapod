@@ -32,11 +32,11 @@ void Servo_init()
     Leg[0].Servo[2].minAngle = 20;
     Leg[0].Servo[2].maxAngle = 160;
 
-    Leg[0].Servo[0].angleOffset = -15;
-    Leg[0].Servo[1].angleOffset = 20;
-    Leg[0].Servo[2].angleOffset = 70;
+    Leg[0].Servo[0].angleOffset = 0; //Positive is CW
+    Leg[0].Servo[1].angleOffset = -4; //Positive is CCW
+    Leg[0].Servo[2].angleOffset = 5; //Positive is CW
 
-    Leg[0].mirrored = true;
+    Leg[0].mirrored = false;
     Leg[0].mountAngle = -30;
 
 #pragma endregion
@@ -49,11 +49,11 @@ void Servo_init()
     Leg[1].Servo[2].minAngle = 20;
     Leg[1].Servo[2].maxAngle = 160;
 
-    Leg[1].Servo[0].angleOffset = 5; //Negative is CCW
-    Leg[1].Servo[1].angleOffset = 30;
-    Leg[1].Servo[2].angleOffset = 85;
+    Leg[1].Servo[0].angleOffset = 8;
+    Leg[1].Servo[1].angleOffset = -13;
+    Leg[1].Servo[2].angleOffset = 0;
 
-    Leg[1].mirrored = true;
+    Leg[1].mirrored = false;
     Leg[1].mountAngle = -90;
 
 #pragma endregion
@@ -66,11 +66,11 @@ void Servo_init()
     Leg[2].Servo[2].minAngle = 20;
     Leg[2].Servo[2].maxAngle = 160;
 
-    Leg[2].Servo[0].angleOffset = 45;
-    Leg[2].Servo[1].angleOffset = 25; //Negative is CW
-    Leg[2].Servo[2].angleOffset = 90;
+    Leg[2].Servo[0].angleOffset = 2;
+    Leg[2].Servo[1].angleOffset = -12;
+    Leg[2].Servo[2].angleOffset = -15;
 
-    Leg[2].mirrored = true;
+    Leg[2].mirrored = false;
     Leg[2].mountAngle = -150;
 
 #pragma endregion
@@ -83,9 +83,9 @@ void Servo_init()
     Leg[3].Servo[2].minAngle = 20;
     Leg[3].Servo[2].maxAngle = 160;
 
-    Leg[3].Servo[0].angleOffset = 20; //Positive is CW
-    Leg[3].Servo[1].angleOffset = 20; //Positive is CCW
-    Leg[3].Servo[2].angleOffset = 85; //Positive is CCW
+    Leg[3].Servo[0].angleOffset = -3; 
+    Leg[3].Servo[1].angleOffset = -20;
+    Leg[3].Servo[2].angleOffset = 0;
 
     Leg[3].mirrored = false;
     Leg[3].mountAngle = 150;
@@ -95,29 +95,30 @@ void Servo_init()
 #pragma region Leg_4
     Leg[4].Servo[0].ch = 12;
     Leg[4].Servo[1].ch = 13;
-    Leg[4].Servo[2].ch = 14;
+    Leg[4].Servo[2].ch = 15;
 
     Leg[4].Servo[2].minAngle = 20;
     Leg[4].Servo[2].maxAngle = 160;
 
+    Leg[4].Servo[0].angleOffset = 12;
+    Leg[4].Servo[1].angleOffset = -12; 
+    Leg[4].Servo[2].angleOffset = -12;
+
     Leg[4].mirrored = false;
     Leg[4].mountAngle = 90;
 
-    Leg[4].Servo[0].angleOffset = 40; //Positive is CW
-    Leg[4].Servo[1].angleOffset = 20; //Positive is CCW
-    Leg[4].Servo[2].angleOffset = 65; //Positive is CCW
 #pragma endregion
 
 #pragma region Leg_5
-    Leg[5].Servo[0].ch = 15;
-    Leg[5].Servo[1].ch = 30;
-    Leg[5].Servo[2].ch = 31;
+    Leg[5].Servo[0].ch = 14;
+    Leg[5].Servo[1].ch = 18;
+    Leg[5].Servo[2].ch = 19;
 
     Leg[5].Servo[2].minAngle = 20;
     Leg[5].Servo[2].maxAngle = 160;
 
-    Leg[5].Servo[0].angleOffset = -2;
-    Leg[5].Servo[1].angleOffset = 3;
+    Leg[5].Servo[0].angleOffset = 2;
+    Leg[5].Servo[1].angleOffset = -3;
     Leg[5].Servo[2].angleOffset = -20;
 
     Leg[5].mirrored = false;

@@ -1,5 +1,12 @@
 # Code Citations
 
+## License: MIT License
+https://github.com/Sir-Kuhnhero/Hexapod
+
+```
+Referenced the walking gait algorithm and servo control logic for implementing the hexapod's movement and leg coordination.
+```
+
 ## License: unknown
 https://github.com/CodeMarker01/DoAn1SPKT/tree/86e08bfcfaee57ed7897d533bfaa89995016e929/src/main.cpp
 
@@ -12,4 +19,6 @@ https://github.com/CodeMarker01/DoAn1SPKT/tree/86e08bfcfaee57ed7897d533bfaa89995
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <
 ```
+
+
 
