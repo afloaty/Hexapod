@@ -88,7 +88,7 @@ extern int loopTime;
 extern Vector2 directionInput; // what direction and how fast (vector length) the hexapod should walking
 extern float rotationInput;    // how much and how fast should the hexapod rotate
 extern float groundClearance;  // how high off the ground is the hexapod walking
-extern float stepRadius;       // how long of a step can be taken taken
+extern float stepRadius;       // how far of a step can be taken
 extern float maxSpeed;         // maximum speed for leg movement
 
 // ================================================================
@@ -149,8 +149,8 @@ void Output_update();
 #ifdef SERVO
 
 #define LENGTH_COXA 50
-#define LENGTH_FEMUR 75
-#define LENGTH_TIBIA 125
+#define LENGTH_FEMUR 80
+#define LENGTH_TIBIA 130
 
 void calcLegServoAngles(Leg_Struct &leg);
 
