@@ -4,7 +4,7 @@
 int loopTime;
 Vector2 directionInput(0, 0);
 float rotationInput = 0;
-float groundClearance = 35;
+float groundClearance = 50;
 float stepRadius = 100;
 float maxSpeed = 90;
 State HexapodState = State::SITTING;
@@ -13,8 +13,8 @@ WebServer server(80);
 const char* ssid = "SpiderBot";
 const char* password = "test1234";
 
-const float movementSpeed = 400.0f;
-const float rotationSpeed = 400.0f;
+const float movementSpeed = 500.0f;
+const float rotationSpeed = 500.0f;
 
 void setup() {
     Servo_init();

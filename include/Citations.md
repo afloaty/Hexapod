@@ -1,5 +1,15 @@
 # Code Citations
 
+## License: Apache License 2.0
+https://github.com/mithi/hexapod
+
+```
+Referenced the inverse kinematic calculations and walking gait simulation.
+```
+
+## License: unknown
+https://github.com/CodeMarker01/DoAn1SPKT/tree/86e08bfcfaee57ed7897d533bfaa89995016e929/src/main.cpp
+
 ## License: MIT License
 https://github.com/Sir-Kuhnhero/Hexapod
 
