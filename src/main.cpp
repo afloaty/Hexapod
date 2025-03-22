@@ -13,7 +13,7 @@ WebServer server(80);
 const char* ssid = "SpiderBot";
 const char* password = "test1234";
 
-const float movementSpeed = 120.0f;  // mm/s
+const float movementSpeed = 175.0f;  // mm/s
 const float rotationSpeed = 90.0f;  // degrees per second
 
 void setup() {

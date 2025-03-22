@@ -12,7 +12,7 @@ void calcLegServoAngles(Leg_Struct &leg)
 {
 
     // ###############################################################
-    // ### adjust coodinated for loacal space of leg (rotated leg) ###
+    // ### adjust coodinated for local space of leg (rotated leg) ###
     // ###############################################################
 
     Vector3 localCoordinates;
@@ -23,7 +23,7 @@ void calcLegServoAngles(Leg_Struct &leg)
     localCoordinates.x = cosAlpha * leg.targetPosition.x + sinAlpha * leg.targetPosition.y; // adjust for leg mounting rotation and zer0 position
     localCoordinates.x += legZeroOffset.x;                                                  // adjust for zero position (otherwise the leg origion is (0,0,0))
 
-    localCoordinates.y = sinAlpha * leg.targetPosition.x - cosAlpha * leg.targetPosition.y; // we have to multiply by -1 to keep a right hand coordinat system
+    localCoordinates.y = sinAlpha * leg.targetPosition.x - cosAlpha * leg.targetPosition.y; // we have to multiply by -1 to keep a right hand coordinate system
     localCoordinates.y += legZeroOffset.y;
 
     localCoordinates.z = leg.targetPosition.z + legZeroOffset.z;

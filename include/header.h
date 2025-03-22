@@ -4,7 +4,7 @@
 #include <SoftwareSerial.h>
 
 #define SERVO
-#define SERVO_CALIBRATION
+//#define SERVO_CALIBRATION
 
 class Vector3
 {

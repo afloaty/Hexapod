@@ -42,9 +42,9 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_1
-    Leg[1].Servo[0].ch = 3;
-    Leg[1].Servo[1].ch = 4;
-    Leg[1].Servo[2].ch = 5;
+    Leg[1].Servo[0].ch = 4;
+    Leg[1].Servo[1].ch = 5;
+    Leg[1].Servo[2].ch = 6;
 
     Leg[1].Servo[2].minAngle = 20;
     Leg[1].Servo[2].maxAngle = 160;
@@ -59,9 +59,9 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_2
-    Leg[2].Servo[0].ch = 6;
-    Leg[2].Servo[1].ch = 7;
-    Leg[2].Servo[2].ch = 8;
+    Leg[2].Servo[0].ch = 8;
+    Leg[2].Servo[1].ch = 9;
+    Leg[2].Servo[2].ch = 10;
 
     Leg[2].Servo[2].minAngle = 20;
     Leg[2].Servo[2].maxAngle = 160;
@@ -76,9 +76,9 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_3
-    Leg[3].Servo[0].ch = 9;
-    Leg[3].Servo[1].ch = 10;
-    Leg[3].Servo[2].ch = 11;
+    Leg[3].Servo[0].ch = 28;
+    Leg[3].Servo[1].ch = 29;
+    Leg[3].Servo[2].ch = 30;
 
     Leg[3].Servo[2].minAngle = 20;
     Leg[3].Servo[2].maxAngle = 160;
@@ -93,9 +93,9 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_4
-    Leg[4].Servo[0].ch = 12;
-    Leg[4].Servo[1].ch = 13;
-    Leg[4].Servo[2].ch = 16;
+    Leg[4].Servo[0].ch = 24;
+    Leg[4].Servo[1].ch = 25;
+    Leg[4].Servo[2].ch = 26;
 
     Leg[4].Servo[2].minAngle = 20;
     Leg[4].Servo[2].maxAngle = 160;
@@ -110,9 +110,9 @@ void Servo_init()
 #pragma endregion
 
 #pragma region Leg_5
-    Leg[5].Servo[0].ch = 17;
-    Leg[5].Servo[1].ch = 18;
-    Leg[5].Servo[2].ch = 19;
+    Leg[5].Servo[0].ch = 16;
+    Leg[5].Servo[1].ch = 17;
+    Leg[5].Servo[2].ch = 18;
 
     Leg[5].Servo[2].minAngle = 20;
     Leg[5].Servo[2].maxAngle = 160;
