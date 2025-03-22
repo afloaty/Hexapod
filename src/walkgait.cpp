@@ -227,13 +227,13 @@ Vector3 calcTarget(Leg_Struct &leg)
 
     Vector2 rotationProjection; // if there is no rotation input is is left as zero
 
-    if (rotation < 0)
+    if (rotation < 0) // CCW
     {
-        rotationProjection = (Vector2::forward).rotate(leg.mountAngle - 90);
+        rotationProjection = Vector2::back.rotate(leg.mountAngle - 90); // (-sin θ, cos θ)
     }
-    else if (rotation > 0)
+    else if (rotation > 0) // CW
     {
-        rotationProjection = (Vector2::back).rotate(leg.mountAngle - 90);
+        rotationProjection = Vector2::forward.rotate(leg.mountAngle - 90); // (sin θ, -cos θ)
     }
 
     if (leg.lifted)
