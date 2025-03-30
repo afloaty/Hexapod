@@ -13,6 +13,12 @@ Leg_Struct Leg[6];
 
 void Servo_init()
 {
+    // Software reset for all PCA9685 devices
+    Wire.beginTransmission(0x00); // General call address
+    Wire.write(0x06);             // Reset command
+    Wire.endTransmission();
+    delay(10);                    // Delay to allow reset to complete
+
     servoDriver_0.begin();
     servoDriver_0.setOscillatorFrequency(25000000);
     servoDriver_0.setPWMFreq(SERVO_FREQ); // Analog servos run at ~50 Hz updates
@@ -33,8 +39,8 @@ void Servo_init()
     Leg[0].Servo[2].maxAngle = 160;
 
     Leg[0].Servo[0].angleOffset = 0; //Positive is CW
-    Leg[0].Servo[1].angleOffset = -4; //Positive is CCW
-    Leg[0].Servo[2].angleOffset = 5; //Positive is CW
+    Leg[0].Servo[1].angleOffset = -7; //Positive is CCW
+    Leg[0].Servo[2].angleOffset = 0; //Positive is CW
 
     Leg[0].mirrored = false;
     Leg[0].mountAngle = -30;
@@ -49,9 +55,9 @@ void Servo_init()
     Leg[1].Servo[2].minAngle = 20;
     Leg[1].Servo[2].maxAngle = 160;
 
-    Leg[1].Servo[0].angleOffset = 8;
-    Leg[1].Servo[1].angleOffset = -13;
-    Leg[1].Servo[2].angleOffset = 0;
+    Leg[1].Servo[0].angleOffset = 8; //Positive is CW
+    Leg[1].Servo[1].angleOffset = -20; //Positive is CCW
+    Leg[1].Servo[2].angleOffset = -5; //Positive is CW
 
     Leg[1].mirrored = false;
     Leg[1].mountAngle = -90;
@@ -117,9 +123,9 @@ void Servo_init()
     Leg[5].Servo[2].minAngle = 20;
     Leg[5].Servo[2].maxAngle = 160;
 
-    Leg[5].Servo[0].angleOffset = 2;
-    Leg[5].Servo[1].angleOffset = -3;
-    Leg[5].Servo[2].angleOffset = 0;
+    Leg[5].Servo[0].angleOffset = 8; //Positive is CW
+    Leg[5].Servo[1].angleOffset = -5; //Positive is CCW
+    Leg[5].Servo[2].angleOffset = -5; //Positive is CW
 
     Leg[5].mirrored = false;
     Leg[5].mountAngle = 30;
@@ -225,6 +231,16 @@ void Output_update()
     Leg_update(3);
     Leg_update(4);
     Leg_update(5);
+}
+
+void setAllServosToNeutral() {
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 3; j++) {
+            // Set target angle to 90 degrees, adjusted for offset
+            Leg[i].Servo[j].targetAngle = 90 - Leg[i].Servo[j].angleOffset;
+            Servo_update(Leg[i].Servo[j]);
+        }
+    }
 }
 
 #endif

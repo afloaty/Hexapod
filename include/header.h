@@ -90,6 +90,7 @@ extern float rotationInput;    // how much and how fast should the hexapod rotat
 extern float groundClearance;  // how high off the ground is the hexapod walking
 extern float stepRadius;       // how far of a step can be taken
 extern float maxSpeed;         // maximum speed for leg movement
+extern float speedMultiplier;  // Speed multiplier (0.0 to 2.0, where 1.0 is default)
 
 // ================================================================
 // ===                          output                          ===
@@ -139,6 +140,7 @@ void Servo_moveAllToMaxValue();
 
 void Leg_update(const int &legID);
 void Output_update();
+void setAllServosToNeutral();
 
 #endif
 
