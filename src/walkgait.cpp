@@ -24,19 +24,16 @@ void calcInterpolatedTarget(Vector3 (&interpolatedTarget)[6]);
 void standUp()
 {
     if (HexapodState != State::SITTING)
-    {
         return;
-    }
 
-    // move up to start
+    // move all legs to start position
     Vector3 startPosition(0.0f, 0.0f, 120.0f);
-
-    for (int i = 0; i < 6; i++)
-    {
+    for (int i = 0; i < 6; i++) {
         Leg[i].targetPosition = startPosition;
-        Leg_update(i);
-        delay(250);
     }
+
+    // update all leg positions at once
+    Output_update();  // this calls Leg_update(0..5)
 
     HexapodState = State::STANDING;
 }
@@ -223,7 +220,7 @@ Vector3 calcTarget(Leg_Struct &leg)
     }
 
     Vector2 projectionDirection;
-    Vector2 projectionOrigion;
+    Vector2 projectionOrigin;
 
     Vector2 rotationProjection; // if there is no rotation input is is left as zero
 
@@ -239,17 +236,17 @@ Vector3 calcTarget(Leg_Struct &leg)
     if (leg.lifted)
     {
         projectionDirection = direction + rotationProjection;
-        projectionOrigion = Vector2::zero;
+        projectionOrigin = Vector2::zero;
     }
     else
     {
         projectionDirection = direction.inverse() + rotationProjection.inverse();
 
-        Vector2 newOrigion(leg.curPosition.x, leg.curPosition.y);
-        projectionOrigion = newOrigion;
+        Vector2 newOrigin(leg.curPosition.x, leg.curPosition.y);
+        projectionOrigin = newOrigin;
     }
 
-    Vector3 target = projectPointToCircle(stepRadius, projectionOrigion, projectionDirection).toVector3();
+    Vector3 target = projectPointToCircle(stepRadius, projectionOrigin, projectionDirection).toVector3();
     target.z = LENGTH_TIBIA - (groundClearance + 40);
 
     return target;

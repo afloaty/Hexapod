@@ -22,7 +22,6 @@ void setup() {
     delay(10);             // Small delay to stabilize the bus
 
     Servo_init();          // Initialize PCA9685 drivers and servo configurations
-    setAllServosToNeutral(); // Set all servos to a neutral position
     delay(500);            // Allow time for servos to stabilize
 
     directionInput = Vector2(0, 0);
@@ -34,6 +33,7 @@ void setup() {
 
     WiFi.softAP(ssid, password);
     Serial.print("IP Address: ");
+    Serial.println(WiFi.softAPIP());
 
     server.on("/", HTTP_GET, []() { server.send(200, "text/html", htmlPage); });
     server.on("/led/on", HTTP_GET, []() { digitalWrite(ledPin, HIGH); server.send(200, "text/plain", "LED ON"); });
